@@ -1,0 +1,57 @@
+use_xft yes
+xftfont 123:size=8
+xftalpha 0.1
+update_interval 1
+total_run_times 0
+
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_colour 000000
+own_window_argb_visual yes
+own_window_argb_value 0
+
+double_buffer yes
+#minimum_size 250 5
+#maximum_width 500
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_color white
+default_shade_color red
+default_outline_color green
+alignment top_left
+gap_x 0
+gap_y 20
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 1
+override_utf8_locale yes
+use_spacer yes
+
+
+minimum_size 0 0
+TEXT
+# Time
+${voffset 10}${color EAEAEA}${font GE Inspira:pixelsize=80}${time %H:%M}${font}${voffset -60}${offset 10}${color FFA300}${font GE Inspira:pixelsize=32}${time %d} ${voffset -0}${color EAEAEA}${font GE Inspira:pixelsize=22}${time  %B} ${time %Y}${font}${voffset 8}${font GE Inspira:pixelsize=44}${offset -135}${time %A}${font}
+
+# CPU Info
+
+${voffset -10}${offset 12}${font Ubuntu:pixelsize=12}${color FFA300}HD ${offset 9}$color${fs_free /} / ${fs_size /}${offset 30}${color FFA300}RAM ${offset 9}$color$mem / $memmax${offset 30}${color FFA300}CPU ${offset 9}$color${cpu cpu0}%
+
+# Weather
+
+${texeci 1300 curl -s "http://w1.weather.gov/xml/current_obs/KDAB.xml" -o ~/.cache/weather.xml}
+${voffset -20}${font GE Inspira:pixelsize=12}Temperature: ${font GE Inspira:pixelsize=20}${color 00A3FF}${exec ~/.conky/Gotham/WeatherScript.py temperature_string}$color
+${voffset -5}${font GE Inspira:pixelsize=12}Humidity: ${font GE Inspira:pixelsize=20}${color 00ffa3}${exec ~/.conky/Gotham/WeatherScript.py relative_humidity}%$color
+${voffset -5}${font GE Inspira:pixelsize=12}Pressure: ${font GE Inspira:pixelsize=20}${color dd5555}${exec ~/.conky/Gotham/WeatherScript.py pressure_mb}$color mb
+${voffset -5}${font GE Inspira:pixelsize=12}Wind: ${font GE Inspira:pixelsize=20}${color dddd00}${exec ~/.conky/Gotham/WeatherScript.py wind_mph}$color mph @ ${color dddd00}${exec ~/.conky/Gotham/WeatherScript.py wind_degrees}${font ITC Avant Garde Gothic Pro:bold:size=8}${voffset -12}o${voffset 14}$color
+${font GE Inspira:pixelsize=12}${color cccccc}${exec ~/.conky/Gotham/WeatherScript.py observation_time}$color
+
+
+#${voffset 30}$font${exec /home/meo/.conky/Gotham/WeatherScript.sh KDAB}
+
+
