@@ -1,0 +1,5 @@
+Theme:          Adapta-Nokto-Maia
+Window borders: Vertex_alt_metacity
+Icons:          ePapirus
+Controls:       Adapta-Nokto-Eta-Maia
+Mouse Pointer:  Adwaita
