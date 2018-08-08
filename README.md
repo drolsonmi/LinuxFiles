@@ -9,6 +9,6 @@ To update:
 $ git pull origin master
 
 To update on server:
-$ git add [_]
-$ git commit -m [_]
+$ git add <_>
+$ git commit -m <_>
 $ git push origin master
